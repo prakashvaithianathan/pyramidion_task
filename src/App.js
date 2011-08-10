@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home/Home'
 import Wallet from './pages/Wallet/Wallet'
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
+import {Buffer} from 'buffer'
 
 function App() {
  
