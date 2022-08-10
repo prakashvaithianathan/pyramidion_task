@@ -8,7 +8,6 @@ import Wallet from "../Wallet/Wallet";
 import { ethers } from "ethers";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { useWeb3React } from "@web3-react/core";
-import { injected } from "../../utils/connector";
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import Navbar from "../../Components/Navbar";
