@@ -1,14 +1,19 @@
-import React from "react";
+import React,{useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MdOutlineContentCopy } from "react-icons/md";
 import Navbar from "../../Components/Navbar";
 import { BscConnector } from "@binance-chain/bsc-connector";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import {ethers} from 'ethers'
+
 // import {  } from '@web3-react/metamask'
 
 const Wallet = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  console.log(state);
+
+  const [chainID, setChainID] = useState(state?.chainId)
 
   const handleClipBoard = () => {
     window.navigator.clipboard.writeText(state?.address);
@@ -18,11 +23,54 @@ const Wallet = () => {
     supportedChainIds: [56, 97], 
   });
 
+
+  const [dropDownName, setDropDownName] = useState(state?.network&&state.network[0]?.name)
+  const [networkDropDown, setNetworkDropDown] = useState(false)
+  const [balance, setBalance] = useState(state?.balance)
+
   const handleDeactivate = async () => {
-    await bsc.deactivate();
+
+
+
+    if(state?.name==="Binance"){
+        await bsc.deactivate();
+    }
+
+
 
     navigate("/");
   };
+
+
+  const handleNetwork = async(item)=>{
+    // try {
+        setDropDownName(item?.name);
+        setNetworkDropDown(false)
+        const accounts = await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{chainId:"0x"+item?.chainId}]
+          });
+
+ const account =  await window.ethereum.request({
+    method: "eth_requestAccounts"
+  });
+  setChainID(item?.chainId)
+  console.log(window.ethereum);
+          const provider = new ethers.providers.Web3Provider(window.ethereum)
+         
+    let balance = await provider.getBalance(account[0]);
+   
+    balance = ethers.utils.formatEther(balance);
+    setBalance(balance)
+
+    // } catch (error) {
+        
+    //     console.log(error);
+    // }
+  }
+
+
+//   console.log(state?.network);
 
   return (
     <div>
@@ -81,7 +129,7 @@ const Wallet = () => {
             >
               Chain Id:
             </span>
-            <span>&nbsp;{state?.chainId}</span>
+            <span>&nbsp;{chainID}</span>
           </div>
           {
             state?.balance&&
@@ -93,8 +141,36 @@ const Wallet = () => {
             >
               Balance:
             </span>
-            <span>&nbsp;{state?.balance}</span>
+            <span>&nbsp;{balance}</span>
           </div>
+          }
+
+          {
+            state?.network &&
+<div className="wallet_details_inner_container " onMouseEnter={()=>{setNetworkDropDown(true)}} onMouseLeave={()=>{setNetworkDropDown(false)}}>
+            <span
+              className="secondary_font"
+              style={{ color: state?.name === "Coinbase" ? "blue" : "#F3BA2F" }}
+            >
+              Network:
+            </span>
+           &nbsp; <span style={{marginTop:'5px',cursor:'pointer'}}>{dropDownName}</span>
+            {
+                  networkDropDown &&
+            <div  className="dropDownContainer" >
+    
+      {
+      
+        state?.network?.map((item)=>{
+            return(
+                <ul className="drop_down_child" onClick={()=>{handleNetwork(item)}}>{item?.name}</ul>
+            )
+        })
+      }
+</div>
+}
+          </div>
+
           }
           
           <div className="wallet_details_inner_container">

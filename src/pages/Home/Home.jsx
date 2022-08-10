@@ -62,7 +62,8 @@ const Home = () => {
         image: metamask,
         address: getMetamask[0],
         chainId: window.ethereum.networkVersion,
-        balance:balance
+        balance:balance,
+        network:[{name:'Ethereum Mainnet',chainId:"1"},{name:"Ropsten",chainId:"3"},{name:"Rinkeby",chainId:"4"},{name:"Goerli",chainId:"5"}]
       },
     });
   };
@@ -94,7 +95,8 @@ const Home = () => {
         image: coinbase,
         address: getAccount,
         chainId: getChainId,
-        balance:balance
+        balance:balance,
+        network:[{name:'Ethereum Mainnet',chainId:"1"},{name:"Ropsten",chainId:"3"},{name:"Rinkeby",chainId:"4"},{name:"Goerli",chainId:"5"}]
       },
     });
   };
