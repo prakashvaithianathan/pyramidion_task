@@ -1,0 +1,163 @@
+
+
+body{
+  background-color: #03032B ;
+  height: 100vh ;
+  overflow:hidden ;
+  margin: 0px ;
+  padding: 0px;
+}
+
+.wel-sli>img {
+  opacity: 0.3;
+  /* max-width: initial; */
+  width: 50%;
+  display: block;
+  position: absolute;
+  /* top: 0%; */
+  right: -10%;
+  bottom: -20% ;
+}
+
+@media screen and (max-width:1000px){
+  .wel-sli>img {
+    width: 80% ;
+    right: -20%;
+    bottom: -20% ;
+  }
+}
+
+.wallet_inner_container{
+  background: #03032B ;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.268) ;
+  padding: 50px 80px ;
+  border-radius: 20px;
+
+}
+
+
+.wallet_inner_container:hover{
+  background: rgba(128, 128, 128, 0.125) ;
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: all .5s ease;
+}
+
+
+.wallet_container{
+  display: flex;
+  align-items: center ;
+  justify-content: space-around;
+width: 70%;
+margin: auto ;
+height: 100%;
+color: whitesmoke;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+
+.text_center{
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px ;
+  font-weight: 500;
+}
+
+.wallet_details_container{
+  background: #03032B ;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.268) ;
+  padding: 20px ;
+  border-radius: 20px;
+  width: 40%;
+  color: white;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.title_font{
+  font-weight: 800;
+  font-size: 25px;
+}
+
+.center_align{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0px;
+}
+
+.secondary_font{
+  font-weight: 500;
+  font-size: 20px;
+
+}
+
+.wallet_details_inner_container{
+  margin: 30px 0px;
+
+}
+
+.wallet_details_first_child_container{
+ margin-left: 40%; 
+transform: translateX(-40%);
+}
+
+.clipboard:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all .3s ease;
+}
+
+.yellow_btn{
+  border: 2px solid #F3BA2F;
+  padding: 10px 20px;
+  background-color: transparent;
+  outline: none;
+  color: #F3BA2F;
+  border-radius: 10px 0px 10px 0px;
+  
+  font-weight: 600;
+}
+
+.yellow_btn:hover{
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  background-color: #F3BA2F;
+  transition: all .3s ease;
+}
+
+
+.blue_btn{
+  border: 2px solid #0052FF;
+  padding: 10px 20px;
+  background-color: transparent;
+  outline: none;
+  color: #0052FF;
+  border-radius: 10px 0px 10px 0px;
+  
+  font-weight: 600;
+}
+
+.blue_btn:hover{
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background-color: #0052FF;
+  transition: all .3s ease;
+}
+
+
+.navbar_inner_container{
+  padding: 20px ;
+  margin-left: 50px;
+}
+
+.navbar_container{
+  background: #0000004f ;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.226) ;
+}
